@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Asana Droplr Preview",
+  "version": "2.1",
+  "description": "Displays a preview popup for droplr URLs in Asana.",
+  "permissions": ["http://*.asana.com/", "https://*.asana.com/", "https://d3fy.xyz/"],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*.asana.com/*",
+        "https://*.asana.com/*"
+      ],
+      "js": ["jquery-3.2.1.min.js", "content.js"]
+    }
+  ]
+}
