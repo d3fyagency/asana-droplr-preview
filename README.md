@@ -9,3 +9,5 @@ To test on Chrome:
 
 Whenever the code is updated, you will have manually click on the Reload link in the Chrome Settings tab:
 http://d3fy.xyz/U8zJfc
+
+Made by: D3FY Development http://d3fy.com
