@@ -84,7 +84,7 @@ $('body').on('mouseenter mouseleave', 'a:regex(href, d3fy.xyz)', function(event)
           var rightBoundary = scrollableParent.offset().left + scrollableParent.innerWidth();
 
           if(el.offset().left + 300 > rightBoundary){
-            leftPos = rightBoundary - 310;
+            leftPos = rightBoundary - 315;
           }else{
             leftPos = el.offset().left;
           }
