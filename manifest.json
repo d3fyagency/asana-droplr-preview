@@ -10,7 +10,13 @@
         "http://*.asana.com/*",
         "https://*.asana.com/*"
       ],
-      "js": ["jquery-3.2.1.min.js", "content.js"]
+      "js": [
+        "jquery-3.2.1.min.js",
+        "jquery.regexSelector.js",
+        "jquery.balloonPopup.js",
+        "jquery.asanaDroplrPreview.js",
+        "content.js"
+      ]
     }
   ],
   "web_accessible_resources": ["balloon-tail.png"]
