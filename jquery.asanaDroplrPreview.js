@@ -19,9 +19,13 @@
       'width': '100%',
       'height': '100%',
       'background-image': 'url("'+ getPreviewImageUrl(el.attr('href')) + '")',
-      'background-size': '100% 100%'
+      'background-size': 'cover'
     });
 
-    return $(this).adpBalloonPopup($.extend(settings.popupOptions, {contents: previewImg}));
+    return $(this).adpBalloonPopup($.extend(settings.popupOptions, {
+      contents: previewImg,
+      imgUrl: getPreviewImageUrl(el.attr('href')),
+      droplrUrl: el.attr('href')
+    }));
   }
 }(jQuery));

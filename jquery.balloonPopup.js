@@ -2,7 +2,7 @@
   $.fn.adpBalloonPopup = function(params){
     var defaults = {
       balloonTailHTML: '<img class="balloon-tail-img" src="'+chrome.extension.getURL('balloon-tail.png') + '" />',
-      thePopupHTML: '<div class="d3fy-droplr-preview-popup"></div>',
+      thePopupHTML: '<div class="d3fy-droplr-preview-popup" hovered="0"></div>',
       styles: {
         width: '300px',
         height: '200px',
@@ -11,8 +11,11 @@
         'background-color': 'white',
         padding: '5px',
         left: '0',
-        border: '2px #000 solid',
-        overflow: 'visible'
+        border: '1px #000 solid',
+        overflow: 'visible',
+        'box-shadow': '5px 5px 3px #DDD',
+        'border-radius': '5px',
+        'cursor': 'pointer'
       },
       balloonTailStyles: {
         position: 'fixed',
@@ -27,8 +30,6 @@
     var body = $('body');
 
     var thePopupBox = body.find('.d3fy-droplr-preview-popup');
-
-    // console.log(thePopupBox.length);
 
     if(thePopupBox.length > 0){
       thePopupBox.empty();
@@ -64,7 +65,29 @@
 
     thePopupBox.find('.balloon-tail-img').css({
       'left': el.offset().left + Math.floor(el.width() / 2) + 'px',
-      'top': el.offset().top + 'px'
+      'top': el.offset().top - 2 + 'px'
+    });
+
+    thePopupBox.on('mouseenter mouseleave', function(event){
+      if(event.type === 'mouseenter'){
+        thePopupBox.attr('hovered', '1');
+      }else{
+        thePopupBox.attr('hovered', '0');
+      }
+    });
+
+    thePopupBox.on('click', function(){
+      var theModal = $('.d3fy-droplr-preview-popup-modal:last');
+      var theOverlay = $('.d3fy-droplr-preview-popup-modal-overlay');
+
+      theModal.css({
+        'background-image': 'url("'+ settings.imgUrl + '")',
+        'background-size': 'cover'
+      });
+
+      theModal.attr('droplr-url', settings.droplrUrl);
+
+      theOverlay.show();
     });
 
     this.show = function(){
@@ -74,6 +97,8 @@
     this.hide = function(){
       $('.d3fy-droplr-preview-popup:last').fadeOut('fast');
     }
+
+    this.popupBox = thePopupBox;
 
     return this;
   }

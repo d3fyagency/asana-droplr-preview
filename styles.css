@@ -1,0 +1,30 @@
+.d3fy-droplr-preview-popup-modal-overlay{
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99999998;
+  height: 100%;
+  width: 100%;
+}
+
+.d3fy-droplr-preview-popup-modal{
+  position: fixed;
+  height: 50%;
+  width: 50%;
+  top: 25%;
+  left: 50%;
+  margin-left: -25%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.d3fy-droplr-preview-popup-modal .d3fy-droplr-preview-close-btn-img{
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}

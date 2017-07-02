@@ -16,8 +16,11 @@
         "jquery.balloonPopup.js",
         "jquery.asanaDroplrPreview.js",
         "content.js"
+      ],
+      "css": [
+        "styles.css"
       ]
     }
   ],
-  "web_accessible_resources": ["balloon-tail.png"]
+  "web_accessible_resources": ["balloon-tail.png", "close_btn.png"]
 }
