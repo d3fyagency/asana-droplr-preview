@@ -12,16 +12,6 @@
       return settings.droplrImageFetcherURL + '?' + $.param({[settings.droplrImageFetcherParamKey]: droplrUrl});
     }
 
-    var fetchDroplrAsset = function(droplrUrl){
-      return $.ajax({
-          url: settings.droplrImageFetcherURL,  //Pass URL here
-          type: "GET",
-          data: {
-            [settings.droplrImageFetcherParamKey]: droplrUrl
-          }
-      });
-    }
-
     var el = $(this);
     var previewImg = $('<div></div>');
 
