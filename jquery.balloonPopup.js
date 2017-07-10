@@ -4,8 +4,7 @@
       balloonTailHTML: '<img class="balloon-tail-img" src="'+chrome.extension.getURL('balloon-tail.png') + '" />',
       thePopupHTML: '<div class="d3fy-droplr-preview-popup" hovered="0"></div>',
       styles: {
-        width: '300px',
-        height: '200px',
+        height: 200,
         position: 'fixed',
         'z-index': '9999998',
         'background-color': 'white',
@@ -15,7 +14,8 @@
         overflow: 'visible',
         'box-shadow': '5px 5px 3px #DDD',
         'border-radius': '5px',
-        'cursor': 'pointer'
+        'cursor': 'pointer',
+        'dimensionRatio': 2
       },
       balloonTailStyles: {
         position: 'fixed',
@@ -24,7 +24,12 @@
       contents: ''
     };
 
-    var settings = $.extend(defaults, params);
+    var settings = $.extend(true, {}, defaults, params);
+
+    settings.styles.width = Math.ceil(settings.styles.height * settings.styles.dimensionRatio);
+
+    settings.styles.width += 'px';
+    settings.styles.height += 'px';
 
     var el = $(this);
     var body = $('body');
@@ -92,6 +97,8 @@
 
     this.show = function(){
       $('.d3fy-droplr-preview-popup:last').fadeIn('fast');
+
+      console.log($('.d3fy-droplr-preview-popup:last'));
     }
 
     this.hide = function(){
