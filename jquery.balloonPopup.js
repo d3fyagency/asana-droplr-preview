@@ -97,8 +97,6 @@
 
     this.show = function(){
       $('.d3fy-droplr-preview-popup:last').fadeIn('fast');
-
-      console.log($('.d3fy-droplr-preview-popup:last'));
     }
 
     this.hide = function(){
