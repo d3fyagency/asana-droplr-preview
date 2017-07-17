@@ -46,7 +46,7 @@ $('body').on('mouseenter mouseleave', 'a:regex(href, d3fy.xyz)', function(event)
         }
       })
     }, 750);
-    
+
   }else{
     setTimeout(function(){
 

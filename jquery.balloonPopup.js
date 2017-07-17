@@ -1,25 +1,18 @@
 (function ($){
   $.fn.adpBalloonPopup = function(params){
     var defaults = {
-      balloonTailHTML: '<img class="balloon-tail-img" src="'+chrome.extension.getURL('balloon-tail.png') + '" />',
       thePopupHTML: '<div class="d3fy-droplr-preview-popup" hovered="0"></div>',
       styles: {
         height: 200,
         position: 'fixed',
         'z-index': '9999998',
         'background-color': 'white',
-        padding: '5px',
         left: '0',
-        border: '1px #000 solid',
         overflow: 'visible',
-        'box-shadow': '5px 5px 3px #DDD',
+        'box-shadow': '0 0 25px rgb(90, 90, 90)',
         'border-radius': '5px',
         'cursor': 'pointer',
         'dimensionRatio': 2
-      },
-      balloonTailStyles: {
-        position: 'fixed',
-        'z-index': '9999999',
       },
       contents: ''
     };
@@ -43,8 +36,6 @@
       thePopupBox = $(settings.thePopupHTML).append(settings.contents);
       body.append(thePopupBox);
     }
-
-    thePopupBox.append($(settings.balloonTailHTML).css(settings.balloonTailStyles));
     thePopupBox.css( $.extend(settings.styles, {display: 'none'}) );
 
 
