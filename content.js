@@ -33,38 +33,30 @@ if($('body').find('.d3fy-droplr-preview-popup-modal').length === 0){
 $('body').on('mouseenter mouseleave', 'a:regex(href, d3fy.xyz)', function(event){
   var el = $(this);
 
-  if(event.type === 'mouseenter'){
-    adpObj = el.asanaDroplrPreview();
-    el.attr('hovered', '1');
+    if(event.type === 'mouseenter'){
+      adpObj = el.asanaDroplrPreview();
+      el.attr('hovered', '1');
 
-    setTimeout(function(){
-      adpObj.onReady(function(popup){
-        adpPopup = popup;
+      setTimeout(function(){
+        adpObj.onReady(function(popup){
+          adpPopup = popup;
 
-        if(el.attr('hovered') == '1'){
-          popup.show();
-        }
-      })
-    }, 750);
+          if(el.attr('hovered') == '1'){
+            popup.show();
 
-  }else{
-    setTimeout(function(){
-
-      if(adpPopup){
-        if(adpPopup.popupBox.attr('hovered') == '0'){
-          adpPopup.hide();
-        }else{
-          var t = setInterval(function(){
-            if(adpPopup.popupBox.attr('hovered') == '0'){
-              el.attr('hovered', '0');
-              adpPopup.hide();
-              clearInterval(t);
-            }
-          }, 500);
-        }
-      }
-    }, 750);
-  }
+            var hoverChecker = setInterval(function(){
+              if(el.attr('hovered') === '0' && adpPopup.popupBox.attr('hovered') === '0'){
+                el.attr('hovered', '0');
+                adpPopup.hide();
+                clearInterval(hoverChecker);
+              }
+            }, 500);
+          }
+        })
+      }, 750);
+    }else{
+      el.attr('hovered', '0')
+    }
 });
 
 $(document).keyup(function(e) {
