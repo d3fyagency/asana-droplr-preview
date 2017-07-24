@@ -56,7 +56,7 @@
 
     thePopupBox.css({
       left: leftPos + 'px',
-      'top': el.offset().top - 198 + 'px'
+      'top': el.offset().top - 202 + 'px'
     });
 
     thePopupBox.find('.balloon-tail-img').css({
