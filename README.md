@@ -1,5 +1,5 @@
-# asana-droplr-preview
-Asana Droplr Preview Chrome Extension
+# asana-droplr-preview Chrome Extension
+This project is still under development and not ready for publication. However, it does work (with our current custom Droplr URL).
 
 To test on Chrome:
 
@@ -10,4 +10,9 @@ To test on Chrome:
 Whenever the code is updated, you will have manually click on the Reload link in the Chrome Settings tab:
 http://d3fy.xyz/U8zJfc
 
-Made by: D3FY Development http://d3fy.com
+## About
+
+![D3FY](http://www.d3fy.com/presskit/Black-Logo-300.png)
+
+Asana Droplr Preview Plugin for Chrome is maintained by [D3FY Development](https://www.d3fy.com?utm_source=github).
+We love building for the web! Let's bring your ideas to life!
