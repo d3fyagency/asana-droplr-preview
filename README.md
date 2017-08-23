@@ -3,12 +3,12 @@ This project is still under development and not ready for publication. However, 
 
 To test on Chrome:
 
-1. Open up chrome://extensions/ in your browser and click “Developer mode” in the top right;
+1. Open up [chrome://extensions](chrome://extensions) in your browser and click “Developer mode” in the top right;
 2. Click "Load unpacked extension…";
 3. Select the extension’s directory
 
 Whenever the code is updated, you will have manually click on the Reload link in the Chrome Settings tab:
-http://d3fy.xyz/U8zJfc
+http://d3fy.xyz/OWk4rT
 
 ## About
 
