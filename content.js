@@ -30,7 +30,7 @@ if($('body').find('.d3fy-droplr-preview-popup-modal').length === 0){
   });
 }
 
-$('body').on('mouseenter mouseleave', 'a:regex(href, d3fy.xyz)', function(event){
+$('body').on('mouseenter mouseleave', 'a:regex(href, d.pr)', function(event){
   var el = $(this);
 
     if(event.type === 'mouseenter'){
