@@ -19,4 +19,4 @@ Whenever the code is updated, you will have manually click on the Reload link in
 ![D3FY](http://www.d3fy.com/presskit/Black-Logo-300.png)
 
 Asana Droplr Preview Plugin for Chrome is maintained by [D3FY Development](https://www.d3fy.com?utm_source=github).
-We love building for the web! Let's bring your ideas to life!
+We are a iOS, Android, and Web development agency. We work in React and React Native.
