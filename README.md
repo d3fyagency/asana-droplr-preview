@@ -1,7 +1,11 @@
 # asana-droplr-preview Chrome Extension
-This project is still under development and not ready for publication. However, it does work (with our current custom Droplr URL).
+This project is still under development and not ready for publication. 
 
-To test on Chrome:
+If you are using Droplr's default URL (i.e. not custom), please pull from [this branch](https://github.com/d3fydev/asana-droplr-preview/tree/droplr-url ):
+
+### Adding to Chrome
+
+Once this is production ready, it will be submitted to the chrome store. In the meantime, do this:
 
 1. Open up [chrome://extensions](chrome://extensions) in your browser and click “Developer mode” in the top right;
 2. Click "Load unpacked extension…";
