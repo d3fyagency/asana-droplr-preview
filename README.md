@@ -8,7 +8,7 @@ To test on Chrome:
 3. Select the extension’s directory
 
 Whenever the code is updated, you will have manually click on the Reload link in the Chrome Settings tab:
-http://d3fy.xyz/OWk4rT
+![](http://d3fy.xyz/OWk4rT+)
 
 ## About
 
