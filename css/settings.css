@@ -1,0 +1,29 @@
+// settings.css - this will contain all settings.html related styles.
+ body {
+   font-size: 100%;
+ }
+
+ .main {
+   overflow: hidden;
+   width: 400px;
+   overflow:auto;
+   margin: 0px;
+   padding: 0px;
+ }
+ .panel {
+   margin-bottom: 0;
+   border-color: none;
+   border: none !important;
+ }
+ .svc-icon {
+   width: 16px;
+   height: 16px;
+   background-color: #ffffff;
+   box-shadow: 0px 2px 2px 0px white;
+   -webkit-box-shadow: 0px 2px 2px 0px white;
+   padding: 1px;
+ }
+
+input[type=text] {
+  font-weight: 700;
+}

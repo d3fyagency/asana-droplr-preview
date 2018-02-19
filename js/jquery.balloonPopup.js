@@ -1,3 +1,13 @@
+/**
+ *
+ * Ballon Popup jQuery Plugin
+ *
+ * -Shows popup buble/tooltip of droplr preview
+ *
+ * @author www.d3fy.com
+ * @param  {[type]} $ [description]
+ * @return {[type]}   [description]
+ */
 (function ($){
   $.fn.adpBalloonPopup = function(params){
     var defaults = {

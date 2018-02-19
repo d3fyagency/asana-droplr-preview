@@ -1,9 +1,29 @@
 {
   "manifest_version": 2,
   "name": "Asana Droplr Preview",
-  "version": "2.1",
+  "version": "1.0",
   "description": "Displays a preview popup for droplr URLs in Asana.",
-  "permissions": ["http://*.asana.com/", "https://*.asana.com/", "https://d3fy.xyz/"],
+  "permissions": [
+    "http://*.asana.com/",
+    "https://*.asana.com/",
+    "https://d3fy.xyz/",
+    "https://*/",
+    "http://*/",
+    "storage"
+  ],
+  "browser_action": {
+    "default_popup": "views/settings.html",
+    "default_icon": "images/droplr.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Open Asana Droplr Preview Settings"
+    }
+  },
   "content_scripts": [
     {
       "matches": [
@@ -11,16 +31,19 @@
         "https://*.asana.com/*"
       ],
       "js": [
-        "jquery-3.2.1.min.js",
-        "jquery.regexSelector.js",
-        "jquery.balloonPopup.js",
-        "jquery.asanaDroplrPreview.js",
-        "content.js"
+        "js/jquery-3.2.1.min.js",
+        "js/jquery.regexSelector.js",
+        "js/jquery.balloonPopup.js",
+        "js/jquery.asanaDroplrPreview.js",
+        "js/content.js"
       ],
       "css": [
-        "styles.css"
+        "css/styles.css"
       ]
     }
   ],
-  "web_accessible_resources": ["balloon-tail.png", "close_btn.png"]
+  "web_accessible_resources": [
+    "images/balloon-tail.png",
+    "images/close_btn.png"
+  ]
 }

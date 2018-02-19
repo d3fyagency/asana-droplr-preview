@@ -1,3 +1,12 @@
+/**
+ *
+ * Asana Droplr Preview jQuery Plugin
+ * This controls the fetching of the droplr image
+ *
+ * @author www.d3fy.com
+ * @param  {[type]} $ [description]
+ * @return {[type]}   [description]
+ */
 (function ($){
   $.fn.asanaDroplrPreview = function(params){
     var defaults = {

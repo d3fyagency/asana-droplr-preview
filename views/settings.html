@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Asana Droplr Preview Settings</title>
+    <link type="text/css"  href="../css/bootstrap.min.css" rel="stylesheet"/>
+    <link type="text/css"  href="../css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link type="text/css"  href="../css/settings.css" rel="stylesheet"/>
+  </head>
+  <body>
+     <div class="main">
+       <div class="panel panel-primary" >
+         <div class="panel-heading">Asana-Droplr Preview Settings
+           <label>
+             <img class="svc-icon" src="../images/asana.png" alt="Asana"/>
+             <img class="svc-icon" src="../images/droplr.png" alt="Droplr"/>
+           </label>
+         </div>
+         <div class="panel-body">
+           <form role="form" class="form-inline" id="asana-droplr-prev-settings">
+             <div class="form-group">
+               <label class="control-label" for="droplr-base-url">Droplr URL</label>
+               <input type="text" class="form-control" id="droplr-base-url" placeholder="http://team.droplr.xyz/" required>
+               <span class="help-block"></span>
+             </div>
+             <button id="setting-save-btn" type="submit" class="btn btn-primary pull-right">Save</button>
+            </form>
+         </div>
+       </div>
+    </div>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/settings.js"></script>
+  </body>
+</html>
