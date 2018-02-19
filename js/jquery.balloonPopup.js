@@ -24,7 +24,8 @@
         'cursor': 'pointer',
         'dimensionRatio': 2
       },
-      contents: ''
+      contents: '',
+      contentType: 'image'
     };
 
     var settings = $.extend(true, {}, defaults, params);
@@ -74,7 +75,7 @@
       'top': el.offset().top - 2 + 'px'
     });
 
-    thePopupBox.on('mouseenter mouseleave', function(event){
+    thePopupBox.on('mouseenter mouseleave', function(event) {
       if(event.type === 'mouseenter'){
         thePopupBox.attr('hovered', '1');
       }else{
@@ -82,17 +83,30 @@
       }
     });
 
-    thePopupBox.on('click', function(){
+    thePopupBox.on('click', function() {
       var theModal = $('.d3fy-droplr-preview-popup-modal:last');
       var theOverlay = $('.d3fy-droplr-preview-popup-modal-overlay');
 
-      theModal.css({
-        'background-image': 'url("'+ settings.imgUrl + '")',
-        'background-size': 'cover'
-      });
+      if (settings.contentType === 'video') {
+        theModal.css({
+          'background-image': 'none',
+        });
+
+        var videoHtml = ' <video style="width:100%; min-height:600px; background-color: #ffffff; height:auto;" controls autoplay> ';
+        videoHtml += '  <source src="' + settings.resourceUrl + '" type="video/mp4">';
+        videoHtml += '  Your browser does not support the video tag. ';
+        videoHtml += '</video>';
+        theModal.find('.modal-content').html(videoHtml);
+
+      } else {
+        theModal.find('.modal-content').html("");
+        theModal.css({
+          'background-image': 'url("'+ settings.resourceUrl + '")',
+          'background-size': 'cover'
+        });
+      }
 
       theModal.attr('droplr-url', settings.droplrUrl);
-
       theOverlay.show();
     });
 

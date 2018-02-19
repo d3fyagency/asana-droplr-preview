@@ -16,11 +16,15 @@ if ($('body').find('#asana-droplr-prev-settings').length > 0) {
 
   //get droplr Url from storage
   chrome.storage.local.get('droplrUrl', function(response) {
-    $baseUrlInput.val(response.droplrUrl);
+    var error = chrome.runtime.lastError;
+
+    if (typeof error === 'undefined' && typeof response.droplrUrl !== 'undefined') {
+      $baseUrlInput.val(response.droplrUrl);
+    }
   });
 
   //save button
-  $saveBtn.click(function(e){
+  $saveBtn.click(function(e) {
     e.preventDefault();
     var droplrUrl = $.trim($baseUrlInput.val());
     $fromGroups.removeClass('has-error');

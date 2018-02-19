@@ -9,11 +9,10 @@ var adpObj, adpPopup;
 
 if ($('body').find('.d3fy-droplr-preview-popup-modal').length === 0) {
   var modalOverlay = $('<div class="d3fy-droplr-preview-popup-modal-overlay"></div>');
-  var modal = $('<div class="d3fy-droplr-preview-popup-modal"></div>');
-  var modalCloseBtn = $('<img class="d3fy-droplr-preview-close-btn-img" src="'+chrome.extension.getURL('images/close_btn.png') + '" />')
+  var modal = $('<div class="d3fy-droplr-preview-popup-modal"><div class="modal-content"></div></div>');
+  var modalCloseBtn = $('<img class="d3fy-droplr-preview-close-btn-img" src="' + chrome.extension.getURL('images/close_btn.png') + '" />');
 
   modal.append(modalCloseBtn);
-
   modalOverlay.append(modal);
 
   $('body').append(modalOverlay);
@@ -24,7 +23,7 @@ if ($('body').find('.d3fy-droplr-preview-popup-modal').length === 0) {
     modalOverlay.hide();
   });
 
-  //redirect to drolr link on modal click
+  //redirect to droplr link on modal click
   modal.on('click', function(e){
     e.stopPropagation();
 
@@ -46,39 +45,45 @@ if ($('body').find('.d3fy-droplr-preview-popup-modal').length === 0) {
 //This is being set in browser_action - default_popup
 //@see views/settings.html
 chrome.storage.local.get('droplrUrl', function(response) {
-  var droplrUrl = response.droplrUrl;
-  $('body').on('mouseenter mouseleave', 'a:regex(href, ' + droplrUrl + ')', function(event) {
-    var el = $(this);
-      console.log(el.attr('href'));
-      if (event.type === 'mouseenter') {
+  var error = chrome.runtime.lastError;
 
-        //show droplr preview on hover
-        adpObj = el.asanaDroplrPreview();
-        el.attr('hovered', '1');
+  //check strorage runtime error
+  if (typeof error === 'undefined' && typeof response.droplrUrl !== 'undefined') {
+    var droplrUrl = response.droplrUrl;
 
-        setTimeout(function() {
-          adpObj.onReady(function(popup) {
-            adpPopup = popup;
+    $('body').on('mouseenter mouseleave', 'a:regex(href, ' + droplrUrl + ')', function(event) {
+      var el = $(this);
+        if (event.type === 'mouseenter') {
 
-            if(el.attr('hovered') == '1'){
-              popup.show();
+          //show droplr preview on hover
+          adpObj = el.asanaDroplrPreview();
+          el.attr('hovered', '1');
 
-              var hoverChecker = setInterval(function() {
-                if(el.attr('hovered') === '0' && adpPopup.popupBox.attr('hovered') === '0'){
-                  el.attr('hovered', '0');
-                  adpPopup.hide();
-                  clearInterval(hoverChecker);
-                }
-              }, 500);
-            }
-          })
-        }, 750);
-      }else{
-        el.attr('hovered', '0')
-      }
-  });
+          setTimeout(function() {
+            adpObj.onReady(function(popup) {
+              adpPopup = popup;
+
+              if(el.attr('hovered') == '1'){
+                popup.show();
+
+                var hoverChecker = setInterval(function() {
+                  if(el.attr('hovered') === '0' && adpPopup.popupBox.attr('hovered') === '0'){
+                    el.attr('hovered', '0');
+                    adpPopup.hide();
+                    clearInterval(hoverChecker);
+                  }
+                }, 300);
+              }
+            })
+          }, 750);
+        }else{
+          el.attr('hovered', '0')
+        }
+    });
+
+  }
+
 });
-
 
 $(document).keyup(function(e) {
   if (e.keyCode == 27 && $('.d3fy-droplr-preview-popup-modal-overlay').length > 0) {
