@@ -92,7 +92,7 @@
           'background-image': 'none',
         });
 
-        var videoHtml = ' <video style="width:100%; min-height:600px; background-color: #ffffff; height:auto;" controls autoplay> ';
+        var videoHtml = ' <video style="width:100%; background-color: #ffffff; height:auto;" controls autoplay> ';
         videoHtml += '  <source src="' + settings.resourceUrl + '" type="video/mp4">';
         videoHtml += '  Your browser does not support the video tag. ';
         videoHtml += '</video>';
