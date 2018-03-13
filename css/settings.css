@@ -16,14 +16,22 @@
    border: none !important;
  }
  .svc-icon {
-   width: 16px;
-   height: 16px;
+   width: 24px;
+   height: 24px;
    background-color: #ffffff;
    box-shadow: 0px 2px 2px 0px white;
    -webkit-box-shadow: 0px 2px 2px 0px white;
    padding: 1px;
+   display: inline-block !important;
  }
 
 input[type=text] {
   font-weight: 700;
+}
+
+small.xs-text {
+  display: block;
+  color: #a59e9e !important;
+  font-size: 78% !important;
+  padding-bottom: 4px;
 }

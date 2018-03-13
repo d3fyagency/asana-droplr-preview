@@ -12,25 +12,87 @@
   <body>
      <div class="main">
        <div class="panel panel-primary" >
-         <div class="panel-heading">Asana-Droplr Preview Settings
-           <label>
-             <img class="svc-icon" src="../images/asana.png" alt="Asana"/>
-             <img class="svc-icon" src="../images/droplr.png" alt="Droplr"/>
-           </label>
-         </div>
+         <div class="panel-heading">Asana Preview Settings</div>
          <div class="panel-body">
-           <form role="form" class="form-inline" id="asana-droplr-prev-settings">
-             <div class="form-group">
-               <label class="control-label" for="droplr-base-url">Droplr URL</label>
-               <input type="text" class="form-control" id="droplr-base-url" placeholder="http://team.droplr.xyz/" required>
-               <span class="help-block"></span>
+           <nav class="navbar navbar-default">
+             <div class="container-fluid">
+               <!-- Brand and toggle get grouped for better mobile display -->
+               <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                 </button>
+                 <a class="navbar-brand" href="#">
+                   <img class="svc-icon" src="../images/asana.png" alt="Asana"/>
+                   <img class="svc-icon" src="../images/droplr.png" alt="Droplr"/>
+                   <img class="svc-icon" src="../images/cloudapp.png" alt="CloudApp"/>
+                 </a>
+               </div>
+               <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                 <ul id="main-tab"  class="nav navbar-nav">
+                   <li class="active">
+                     <a href="#droplr">Droplr Setting <span class="sr-only">(current)</span></a>
+                   </li>
+                   <li><a href="#cloudapp">CloudApp Setting</a></li>
+                   <li><a href="#help">Help</a></li>
+                 </ul>
+               </div>
              </div>
-             <button id="setting-save-btn" type="submit" class="btn btn-primary pull-right">Save</button>
-            </form>
+           </nav>
+           <div class="tab-content">
+             <!-- Start Droplr Setting -->
+             <div role="tabpanel" class="tab-pane active" id="droplr">
+               <form role="form" class="form-inline" id="droplr-preview-settings">
+                 <div class="form-group">
+                   <label class="control-label" for="droplr-base-url">
+                     Droplr URL
+                   </label>
+                   <small class="xs-text">If you are using custom URL in your droplr account, please enter it here</small>
+                   <input type="text" class="form-control" id="droplr-base-url" placeholder="http://team.droplr.xyz/" required>
+                   <span class="help-block"></span>
+                 </div>
+                 <button id="dpl-save-btn" type="submit" class="btn btn-primary pull-right">Save</button>
+                </form>
+             </div>
+             <!-- End Droplr Setting -->
+             <!-- Start CloudApp Setting -->
+             <div role="tabpanel" class="tab-pane" id="cloudapp">
+               <form role="form" class="form-inline" id="cloudapp-preview-settings">
+                 <div class="form-group">
+                   <label class="control-label" for="cloudapp-base-url">CloudApp URL</label>
+                   <small class="xs-text">If you are using custom URL in your cloudApp account, please enter it here</small>
+                   <input type="text" class="form-control" id="cloudapp-base-url" placeholder="https://cl.ly/" required>
+                   <span class="help-block"></span>
+                 </div>
+                 <button id="cla-save-btn" type="submit" class="btn btn-primary pull-right">Save</button>
+                </form>
+             </div>
+             <!-- End CloudApp Setting -->
+             <div role="tabpanel" class="tab-pane" id="help">
+                <blockquote>
+                  <h4>Asana Preview <small> 1.0.0</small></h4>
+                </blockquote>
+                <small class="text-primary">supports: </small>
+                <span class="label label-primary">Droplr</span>
+                <span class="label label-primary">CloudApp</span>
+
+                <hr>
+                <h6 class="text-primary">Contact</h6>
+                <address>
+                  <strong>d3fy Team</strong><br>
+                  <small>http://d3fy.com/</small>
+                </address>
+
+             </div>
+
+           </div>
          </div>
        </div>
     </div>
     <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
     <script src="../js/settings.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-.d3fy-droplr-preview-popup-modal-overlay{
+.d3fy-asana-preview-popup-modal-overlay{
   position: fixed;
   left: 0;
   top: 0;
@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-.d3fy-droplr-preview-popup-modal{
+.d3fy-asana-preview-popup-modal{
   position: fixed;
   height: 50%;
   width: 50%;
@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-.d3fy-droplr-preview-popup-modal .d3fy-droplr-preview-close-btn-img{
+.d3fy-asana-preview-popup-modal .d3fy-asana-preview-close-btn-img{
   position: absolute;
   right: -20px;
   top: -20px;

@@ -1,57 +1,124 @@
 
 /**
- * Script for settings.html or browser_action - default_popup
  *
+ * Script for settings.html or browser_action - default_popup
  * @author www.d3fy.com
+ *
+ */
+
+ // Main Navebar Tab
+ $('#main-tab a').click(function (e) {
+   e.preventDefault()
+   $(this).tab('show')
+ })
+
+ /*
+ * Droplr Form Setting
  * @method if
  * @param  {[type]} $ [description]
  * @return {[type]}   [description]
  */
-if ($('body').find('#asana-droplr-prev-settings').length > 0) {
-  var $form = $('#asana-droplr-prev-settings');
-  var $baseUrlInput = $form.find('#droplr-base-url');
-  var $saveBtn = $form.find('#setting-save-btn');
-  var $message = $form.find('.help-block');
-  var $fromGroups = $form.find('.form-group');
+if ($('body').find('#droplr-preview-settings').length > 0) {
+  var $droplrForm = $('#droplr-preview-settings');
+  var $droplrUrlInput = $droplrForm.find('#droplr-base-url');
+  var $saveBtn = $droplrForm.find('#dpl-save-btn');
 
-  //get droplr Url from storage
   chrome.storage.local.get('droplrUrl', function(response) {
     var error = chrome.runtime.lastError;
 
     if (typeof error === 'undefined' && typeof response.droplrUrl !== 'undefined') {
-      $baseUrlInput.val(response.droplrUrl);
+      $droplrUrlInput.val(response.droplrUrl);
     }
   });
 
   //save button
   $saveBtn.click(function(e) {
     e.preventDefault();
-    var droplrUrl = $.trim($baseUrlInput.val());
-    $fromGroups.removeClass('has-error');
-    $fromGroups.removeClass('has-success');
+    var droplrUrl = $.trim($droplrUrlInput.val()),
+        $formGroup = $droplrUrlInput.closest('.form-group'),
+        $message = $formGroup.find('.help-block');
+
+    $formGroup.removeClass('has-error');
+    $formGroup.removeClass('has-success');
 
     if (droplrUrl.length == 0) {
-      $fromGroups.addClass('has-error');
+      $formGroup.addClass('has-error');
       $message.text("This field is required.");
       return;
     } else if (/^(ftp|http|https):\/\/[^ "]+$/.test(droplrUrl) == false) {
-      $fromGroups.addClass('has-error');
-      $message.text("This is invalid Droplr url.");
+      $formGroup.addClass('has-error');
+      $message.text("This is invalid url.");
       return;
     }
 
     //save to browser's local storage
     //@todo exception handling
-    chrome.storage.local.set({'droplrUrl': $baseUrlInput.val()}, function() {
-      $fromGroups.removeClass('has-error');
-      $fromGroups.addClass('has-success');
-      $message.text("Doplr url is successfully saved.");
+    chrome.storage.local.set({'droplrUrl': droplrUrl}, function() {
+      $formGroup.removeClass('has-error');
+      $formGroup.addClass('has-success');
+      $message.html('<p class="bg-success">Doplr url is successfully saved....</p>');
     });
 
     setTimeout(function() {
       $message.text("");
-      $fromGroups.removeClass('has-success');
+      $formGroup.removeClass('has-success');
     },3000);
 
   });
+}
+
+/**
+ *  CloudApp Form Setting
+ * @method if
+ * @param  {[type]} $ [description]
+ * @return {[type]}   [description]
+ */
+if ($('body').find('#cloudapp-preview-settings').length > 0) {
+  var $cloudAppForm = $('#cloudapp-preview-settings');
+  var $cloudAppUrlInput = $cloudAppForm.find('#cloudapp-base-url');
+  var $saveBtn = $cloudAppForm.find('#cla-save-btn');
+
+  chrome.storage.local.get('cloudAppUrl', function(response) {
+    var error = chrome.runtime.lastError;
+
+    if (typeof error === 'undefined' && typeof response.cloudAppUrl !== 'undefined') {
+      $cloudAppUrlInput.val(response.cloudAppUrl);
+    }
+  });
+
+  //save button
+  $saveBtn.click(function(e) {
+    e.preventDefault();
+    var cloudAppUrl = $.trim($cloudAppUrlInput.val()),
+        $formGroup = $cloudAppUrlInput.closest('.form-group'),
+        $message = $formGroup.find('.help-block');
+
+    $formGroup.removeClass('has-error');
+    $formGroup.removeClass('has-success');
+
+    if (cloudAppUrl.length == 0) {
+      $formGroup.addClass('has-error');
+      $message.text("This field is required.");
+      return;
+    } else if (/^(ftp|http|https):\/\/[^ "]+$/.test(cloudAppUrl) == false) {
+      $formGroup.addClass('has-error');
+      $message.text("This is invalid url.");
+      return;
+    }
+
+    //save to browser's local storage
+    //@todo exception handling
+    chrome.storage.local.set({'cloudAppUrl': cloudAppUrl}, function() {
+      $formGroup.removeClass('has-error');
+      $formGroup.addClass('has-success');
+      $message.html('<p class="bg-success">CloudApp url is successfully saved....</p>');
+    });
+
+    setTimeout(function() {
+      $message.text("");
+      $formGroup.removeClass('has-success');
+    },3000);
+
+  });
+
 }

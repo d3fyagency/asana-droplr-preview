@@ -1,6 +1,6 @@
 /**
  *
- * Asana Droplr Preview jQuery Plugin
+ * Asana CloudApp Preview jQuery Plugin
  * This controls the fetching of the droplr image
  *
  * @author www.d3fy.com
@@ -8,28 +8,15 @@
  * @return {[type]}   [description]
  */
 (function ($){
-  $.fn.asanaDroplrPreview = function(params){
+  $.fn.asanaCloudAppPreview = function(params){
     var defaults = {
       popupOptions: {},
-      droplrImageFetcherURL: 'https://dfetch.d3fy.xyz',
-      droplrImageFetcherParamKey: 'target_url',
+      cloudAppDefaultBaseUrl : 'https://cl.ly/',
     }
 
     var settings = $.extend(defaults, params);
     var el = $(this);
     var previewImg = $('<div></div>');
-
-    /**
-     *
-     * This is just to bridge unsecured url (http) of droplr to secure url (https) via backend process
-     *
-     * @function getPreviewUrl
-     * @param  {[type]} droplrUrl [description]
-     * @return {[type]}           [description]
-     */
-    var getPreviewUrl = function(droplrUrl) {
-      return settings.droplrImageFetcherURL + '?' + $.param({[settings.droplrImageFetcherParamKey]: droplrUrl});
-    };
 
     /**
      * Displays  image preview on hover
@@ -40,20 +27,21 @@
      * @return {[type]}            [description]
      */
     var getPreviewImage = function(imageUrl, fn) {
+
       var img = new Image();
-      img.src = getPreviewUrl(imageUrl);
+      img.src = imageUrl;
       img.onload = function() {
         previewImg.css({
           'width': '100%',
           'height': '100%',
-          'background-image': 'url("'+ getPreviewUrl(imageUrl) + '")',
+          'background-image': 'url("'+ imageUrl  + '")',
           'background-size': 'cover'
         });
 
         var balloonPopup = $(el).adpBalloonPopup($.extend(settings.popupOptions, {
             contents: previewImg,
-            resourceUrl: getPreviewUrl(imageUrl) , //url of the server to bridge https /secured link
-            serviceUrl: imageUrl, //droplr url link
+            resourceUrl: imageUrl , //url of the server to bridge https /secured link
+            serviceUrl: el.attr('href'), //droplr url link
             contentType: 'image',
             styles: {
               dimensionRatio: img.width / img.height
@@ -84,8 +72,8 @@
 
         var balloonPopup = $(el).adpBalloonPopup($.extend(settings.popupOptions, {
             contents: previewImg,
-            resourceUrl: getPreviewUrl(videoUrl), //url of the server to bridge https
-            serviceUrl: videoUrl,
+            resourceUrl: videoUrl, //url of the server to bridge https
+            serviceUrl: el.attr('href'),
             contentType: 'video',
             styles: {
               dimensionRatio: 1280 / 800
@@ -95,30 +83,22 @@
         fn.call(this, balloonPopup);
     };
 
-
     this.onReady = function(fn) {
+      var self = this;
+      var url = el.attr('href');
 
-      var url = getPreviewUrl(el.attr('href'));
-
-      //get link header to determine if it is image or video
-      //@since this takes the hover preview in 1 - 2 seconds to appear
-      //@todo refactor , find another way on how to determine the content-type (video or image)
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("HEAD", url, true);
-      xhttp.send();
-
-      xhttp.onreadystatechange = function () {
-        if (this.readyState == this.DONE) {
-          var contenType = this.getResponseHeader("Content-Type");
-
-          if (contenType === 'video/quicktime') {
-            getPreviewVideo(el.attr('href'), fn);
+      $.get(url, function(cloudAppPage) {
+        var $document = $('<div></div>').html(cloudAppPage);
+        var $fileUrlEl = $document.find('#download_file_url');
+        if ($fileUrlEl.length > 0) {
+          var s3Link = $fileUrlEl.attr('href');
+          if ((s3Link.substring(s3Link.length - 4)) === '.mov') {
+            getPreviewVideo(s3Link,fn);
           } else {
-            getPreviewImage(el.attr('href'), fn);
+            getPreviewImage(s3Link,fn);
           }
         }
-      };
-
+      });
     }
 
     return this;

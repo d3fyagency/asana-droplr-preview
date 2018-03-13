@@ -11,7 +11,7 @@
 (function ($){
   $.fn.adpBalloonPopup = function(params){
     var defaults = {
-      thePopupHTML: '<div class="d3fy-droplr-preview-popup" hovered="0"></div>',
+      thePopupHTML: '<div class="d3fy-asana-preview-popup" hovered="0"></div>',
       styles: {
         height: 200,
         position: 'fixed',
@@ -38,7 +38,7 @@
     var el = $(this);
     var body = $('body');
 
-    var thePopupBox = body.find('.d3fy-droplr-preview-popup');
+    var thePopupBox = body.find('.d3fy-asana-preview-popup');
 
     if(thePopupBox.length > 0){
       thePopupBox.empty();
@@ -84,8 +84,8 @@
     });
 
     thePopupBox.on('click', function() {
-      var theModal = $('.d3fy-droplr-preview-popup-modal:last');
-      var theOverlay = $('.d3fy-droplr-preview-popup-modal-overlay');
+      var theModal = $('.d3fy-asana-preview-popup-modal:last');
+      var theOverlay = $('.d3fy-asana-preview-popup-modal-overlay');
 
       if (settings.contentType === 'video') {
         theModal.css({
@@ -106,16 +106,16 @@
         });
       }
 
-      theModal.attr('droplr-url', settings.droplrUrl);
+      theModal.attr('serviceUrl', settings.serviceUrl);
       theOverlay.show();
     });
 
     this.show = function(){
-      $('.d3fy-droplr-preview-popup:last').fadeIn('fast');
+      $('.d3fy-asana-preview-popup:last').fadeIn('fast');
     }
 
     this.hide = function(){
-      $('.d3fy-droplr-preview-popup:last').fadeOut('fast');
+      $('.d3fy-asana-preview-popup:last').fadeOut('fast');
     }
 
     this.popupBox = thePopupBox;
