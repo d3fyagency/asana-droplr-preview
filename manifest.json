@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Asana Preview",
   "version": "1.0.0",
-  "description": "A chrome extension to let you have a preview of the file sharing service's image or video link posted on asana. It supports Droplr and CloudApp.",
+  "description": "Shows preview of the file sharing service's image or video link posted on asana. It supports Droplr and CloudApp.",
   "permissions": [
     "<all_urls>",
     "storage"
