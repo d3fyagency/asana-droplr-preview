@@ -1,16 +1,17 @@
 {
   "manifest_version": 2,
-  "name": "Asana Droplr Preview",
+  "name": "Asana Preview",
   "version": "1.0.0",
-  "description": "Displays a preview popup for droplr URLs in Asana.",
+  "description": "Asana Preview, a chrome extension to let you have a preview of the file sharing service's link posted on asana. It supports Droplr and CloudApp.",
   "permissions": [
-    "http://*.asana.com/",
-    "https://*.asana.com/",
-    "https://d3fy.xyz/",
-    "https://*/",
-    "http://*/",
+    "<all_urls>",
     "storage"
   ],
+  "icons": { 
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png" 
+  },  
   "browser_action": {
     "default_popup": "views/settings.html"
   },
@@ -20,7 +21,7 @@
         "default": "Ctrl+Shift+F",
         "mac": "MacCtrl+Shift+F"
       },
-      "description": "Open Asana Droplr Preview Settings"
+      "description": "Open Asana Preview"
     }
   },
   "content_scripts": [
