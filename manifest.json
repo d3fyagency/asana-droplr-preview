@@ -46,6 +46,7 @@
   "web_accessible_resources": [
     "images/balloon-tail.png",
     "images/close_btn.png",
-    "images/play_file_icon_blue.png"
+    "images/play_file_icon_blue.png",
+    "images/icon.png"
   ]
 }
