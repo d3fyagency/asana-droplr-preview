@@ -35,3 +35,9 @@ small.xs-text {
   font-size: 78% !important;
   padding-bottom: 4px;
 }
+
+#icon {
+   width: 24px;
+   height: 24px;
+   margin-right: 5px;
+}
